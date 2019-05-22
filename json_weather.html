@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sää Helsingissä</title> 
+</head>
+<body>
+	<h3>Sää Helsingissä</h3>
+    
+    <!--TIEDOT-->
+   
+    <div id="vastaus"></div>
+    
+    <!-- SCRIPT -->
+
+	<script type="text/javascript">
+        
+       
+    fetch("http://api.openweathermap.org/data/2.5/weather?lang=fi&q=helsinki&units=metric&APPID=75e873c9521d5f5f6e1512cb9460a9cf")
+
+        .then(function (response) {
+
+            return response.json();
+        })
+
+        .then(function (responseJson) {
+            var teksti = "";
+            
+                teksti = "<p>Sään kuvaus: " + responseJson.weather[0].description + "<br>";
+                teksti = teksti + "Lämpötila: " + responseJson.main.temp + "°C<br>";
+                teksti = teksti + "Tuuli: " + responseJson.wind.speed + " m/s<br>";
+                teksti = teksti + "Pilvisyys: " + responseJson.clouds.all + " %</p>";
+            
+
+            document.getElementById("vastaus").innerHTML = teksti;
+        })
+       
+        .catch(function (error) {
+        document.getElementById("vastaus").innerHTML = "Haku ei onnistunut. Yritä myöhemmin uudelleen.";
+    })
+
+/*
+{"coord":{"lon":24.94,"lat":60.17},
+"weather":[{
+"id":803,
+"main":"Clouds",
+"description":"hajanaisia pilviä","icon":"04d"}],
+"base":"stations","main":{"temp":1,"pressure":1019,"humidity":74,"temp_min":1,"temp_max":1},"visibility":10000,"wind":{"speed":9.3,"deg":190},"clouds":{"all":75},"dt":1543569600,"sys":{"type":1,"id":1332,"message":0.002,"country":"FI","sunrise":1543560901,"sunset":1543584153},"id":658225,"name":"Helsinki","cod":200}
+*/         
+	</script>
+</body>
+</html> 

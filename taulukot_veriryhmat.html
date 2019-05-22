@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Veriryhmät</title> 
+</head>
+<body>
+	<h3>Veriryhmät</h3>
+<form>
+		<p>
+			<label>Etsittävä veriryhmä:</label> 
+			<input type="text" id="etsittava" size="3">
+		</p>
+		<input type="button" value="Etsi" onclick="etsi()">
+	</form>
+
+    <div id="lista"></div>
+    <div id="vastaus"></div>
+
+	<script type="text/javascript">
+        
+        var veriryhmat = ["A+", "O-", "AB+", "O+", "AB+", "AB+", "O-", "AB+", "0+", "AB+"];
+        
+        var teksti= " "; 
+        for (var i = 0; i < veriryhmat.length; i++) 
+        {   var teksti = teksti + veriryhmat[i] + " </br>";
+        }
+        
+       function etsi () {
+        var etsittava = document.getElementById("etsittava").value;
+			var maara = 0; 
+
+			for (var i = 0; i < veriryhmat.length; i++) {
+				if (veriryhmat[i] == etsittava) {
+					maara = maara + 1;
+				}
+			}
+			document.getElementById("vastaus").innerHTML = "<p>Veriryhmää " +
+					etsittava + " löytyi " + maara + " kappaletta</p>";
+		}
+        
+        document.getElementById("lista").innerHTML = "<p>" + teksti + "</p>" ;
+        
+    
+	</script>
+</body>
+</html>
