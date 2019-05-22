@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Arvosanat</title> 
+</head>
+<body>
+	<h3>Arvosanat</h3>
+
+        <div id="vastaus"></div>
+
+	<script type="text/javascript">
+
+    // Arvosanat tilasto
+        var tilasto = [3, 4, 7, 6, 9, 4];
+        
+    // Arvosanojen yhteenlaskettu määrä
+        var summa = 0;
+        for (var i = 0; i < tilasto.length; i++) 
+        { var summa =  summa + tilasto[i];
+        }
+        
+        // Arvosana: Määrä, prosentuaalinen osuus
+        var arvosanat = "";
+        // var prosentit = 0;
+        for (var i = 0; i < tilasto.length; i++) 
+        { var prosentit = (tilasto[i] / summa) * 100;
+            var arvosanat =  arvosanat + "<p>" + (i) + ": " + tilasto[i] + " kpl, " + prosentit.toFixed(1) + " %.</p>";
+        }
+        
+        
+        
+        
+     // var teksti = "";
+     // var teksti = arvosanat + prosentit.toFixed(2) "%. </br>"
+   
+       
+
+        
+document.getElementById("vastaus").innerHTML = arvosanat;
+        
+	</script>
+</body>
+</html>

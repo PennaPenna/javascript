@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tankkaukset</title> 
+</head>
+<body>
+	<h3>Tankkaukset</h3>
+<form><p>
+			<label>Tankkaus:</label> 
+			<input type="text" id="tankkaus" size="4">
+		</p>
+		<input type="button" value="Lisää" onclick="lisaa()">
+    <input type="button" value="Tilasto" onclick="tilasto()">
+	</form>
+    
+    <!--VASTAUS-->
+    <div id="tankkaukset"></div>
+    <div id="tilastot"></div>
+
+	<script type="text/javascript">
+        
+        var tankkaukset = [];
+        
+        // LISÄÄ TANKKAUS LISTAAN
+        function lisaa() {
+			var tankkaus = document.getElementById("tankkaus").value;
+            tankkaukset.push(tankkaus);
+			document.getElementById("tankkaus").value = "";
+            document.getElementById("tilastot").innerHTML = "";
+			var teksti = "";
+			var i;          
+			//tankkaukset.sort();
+            
+			for (i = 0; i < tankkaukset.length; i++) {
+				var teksti = teksti + tankkaukset[i] + "<br>";
+			}
+			 document.getElementById("tankkaukset").innerHTML = "<p><b>Tankkaukset ovat: </b></p><p>" + teksti + "<br>";
+        }
+        
+        // TILASTOI SUURIN; PIENIN JA KESKIARVO
+        function tilasto() {
+        tankkaukset.sort(function(a, b){return a - b}); 
+        var pienin = tankkaukset[0];
+        var suurin = tankkaukset[tankkaukset.length-1];
+        
+    
+        var keskiarvo = 0;
+        for (i = 0; i < tankkaukset.length; i++) {
+            var keskiarvo = keskiarvo + tankkaukset[i] / tankkaukset.length;}
+        
+       document.getElementById("tilastot").innerHTML = 
+             "<p><b>Pienin tankkaus on " + pienin + " litraa. <br>Suurin tankkaus on " + suurin + " litraa.<br>Keskiarvo on " + keskiarvo.toFixed(2) + " litraa.<b></p>";}
+        
+    
+	</script>
+</body>
+</html> 

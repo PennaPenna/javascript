@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Syntymäaika</title> 
+</head>
+<body>
+	<h3>Syntymäaika</h3>
+
+	<form>
+		<p>
+			<label>Syntymäaikasi: </label> <input type="text" id="syntymaaika" size="7"> (VVVV-KK-PP).
+		</p>
+		<p>
+			<input type="button" value="Muunna" onclick="muunna()"></p>
+	</form>
+
+        <div id="vastaus"></div>
+
+	<script type="text/javascript">
+
+	function muunna() {
+            var syntymaaika = document.getElementById("syntymaaika").value;
+         //var 1syntymaaika = kk.trim();
+
+                    
+            //VVVV-KK-PP -> PP-KK-VVVV
+    
+    //var ppkkvvvv = "";
+    var pp = syntymaaika.substr(8,2) + ".";
+    var kk = syntymaaika.substr(5,2) + ".";
+    var vvvv = syntymaaika.substr(0,4) + ".";
+
+        
+document.getElementById("vastaus").innerHTML = 
+"<p>Syntymäaikasi " + pp + kk + vvvv + "</p>";
+        }
+	</script>
+</body>
+</html>

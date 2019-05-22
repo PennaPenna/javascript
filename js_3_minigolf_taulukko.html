@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Minigolf</title> 
+</head>
+<body>
+	<h3>Minigolf</h3>
+
+        <div id="vastaus"></div>
+
+	<script type="text/javascript">
+
+    // Taulukko
+        var minigolf = [23, 19, 37, 20, 21, 30, 26, 24];
+     //lajittelu
+        minigolf.sort(function(a, b){return a - b});
+        
+        // Pienin peli, suurin peli, ka
+   var pienin = minigolf[0];
+   var suurin = minigolf[minigolf.length-1];
+   // ka eli keskiarvo
+        var ka = 0;
+        for (var i = 0; i < minigolf.length; i++) 
+        { var ka =  ka + minigolf[i] / minigolf.length;
+        }
+       
+
+        
+document.getElementById("vastaus").innerHTML = 
+"<p>Pienin peli on " + pienin + ".</br>Suurin peli on " + suurin + ".</br>Pelien keskiarvo on " + ka + ".</p>";
+        
+	</script>
+</body>
+</html>

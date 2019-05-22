@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Syntymävuodenaika</title> 
+</head>
+<body>
+	<h3>Syntymävuodenaika</h3>
+
+	<form>
+		<p>
+			<label>Kuukausi jona olet syntynyt: </label> <input type="text" id="kk" size="2"> (1-12).
+		</p>
+		<p>
+			<input type="button" value="Kerro vuodenaika" onclick="kerro()"></p>
+	</form>
+
+        <div id="vastaus"></div>
+
+	<script type="text/javascript">
+
+	function kerro() {
+            var kk = document.getElementById("kk").value;
+         //var kk = kesto.trim();
+
+                    
+            //vuodenaika
+    if (kk <= 8  && kk >=6) {
+        var vuodenaika = "kesällä";}
+       else if (kk <= 11 && kk >= 9) {
+       var vuodenaika = "syksyllä";}
+          else if (kk == 12  || kk == 1 || kk == 2) {
+       var vuodenaika = "talvella";}
+        else {
+        var vuodenaika = "keväällä";}
+    
+
+        
+document.getElementById("vastaus").innerHTML = 
+"<p>Olet syntynyt " + vuodenaika + ". </p>";
+        }
+	</script>
+</body>
+</html>
